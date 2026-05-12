@@ -3,7 +3,7 @@ name: Build MetalGoose
 on:
   push:
     branches: [main]
-  workflow_dispatch:  # lets you trigger manually
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,3 +22,8 @@ jobs:
             -derivedDataPath build \
             build
 
+      - name: Upload app
+        uses: actions/upload-artifact@v4
+        with:
+          name: MetalGoose
+          path: build/Build/Products/Debug/MetalGoose.app
